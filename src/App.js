@@ -14,11 +14,17 @@ const App = () =>{
     setDescription({...description, [event.target.name]: event.target.value});
   }
 
-  const deleteItem = (event) =>{
-  setTodo(todo.filter((todo, i) => i !== parseInt(event.target.name)))
-  console.log(event.target.name)
+  //const deleteItem = (event) =>{ toinen vaihtoehto
+  //setTodo(todo.filter((todo, i) => i !== parseInt(event.target.name)))
+  //console.log(event.target.name)
+  //<td> <button name={index} onClick={deleteItem}>Delete</button></td>
+  //}
+
+  const deleteItem = (row) =>{ 
+   setTodo(todo.filter((todo, index) => index !== row))
+    console.log(row)
   }
-    
+
   return (
     <div className="App">
       <form onSubmit={addTodo}>
@@ -40,7 +46,7 @@ const App = () =>{
           <tr key={index}>
           <td>{todo.date}</td>
           <td>{todo.description}</td>
-          <td> <button name={index} onClick={deleteItem}>Delete</button></td>
+          <td> <button onClick={() => deleteItem(index)}>Delete</button></td>
           </tr>
           </div>
           )}
